@@ -24,7 +24,7 @@ configs = list(zip(classes, GPU))
 for random_seed in range(1, 5):
     base_config['dataset_reader']['random_seed'] = random_seed
     processes = []
-    for subseries in range(len(classes) / 3):
+    for subseries in range(int(len(classes) / 3)):
         subconfigs = configs[(subseries * 3):(subseries * 3 + 3)]
         for config in subconfigs:
             # Here we edit the config for a particular experiment

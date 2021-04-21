@@ -47,7 +47,7 @@ def tokenize(s):
     return re.findall(r"[\w']+|[‑–—“”€№…’\"#$%&\'()+,-./:;<>?]", s)
 
 
-def snips_reader(file='train', dataset_download_path='../ontonotes/', valid_class=None, random_seed=None,
+def snips_reader(file='train.txt', dataset_download_path='../ontonotes/', valid_class=None, random_seed=None,
                  drop_empty=False):
     sentences = []
     ys = []
@@ -181,6 +181,7 @@ class PnetOntoDatasetReader(DatasetReader):
             # TextField requires ``Token`` objects
             tokens = [Token(token) for token in tokens]
             sequence = TextField(tokens, self._token_indexers)
+            print(sequence)
 
             instance_fields: Dict[str, Field] = {'tokens': sequence}
             # Add "feature labels" to instance

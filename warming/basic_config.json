@@ -8,7 +8,7 @@
   "train_data_path": "/Users/fritz/conll2003/train.txt",
   "validation_data_path": "/Users/fritz/Downloads/conll2003/valid.txt",
   "test_data_path": "/Users/fritz/Downloads/conll2003/test.txt",
-  "evaluate_on_test": false,
+  "evaluate_on_test": true,
   "model": {
     "type": "mod_tagger",
     "constraint_type": "BIO",
@@ -18,13 +18,13 @@
       "tokens": {
         "type": "embedding",
         "embedding_dim": 50,
-        "pretrained_file": "/scratch_global/DATASETS/text-embeddings/glove/glove.6B.50d.txt.gz",
+        "pretrained_file": "https://s3-us-west-2.amazonaws.com/allennlp/datasets/glove/glove.6B.50d.txt.gz",
         "trainable": false
       },
       "elmo":{
         "type": "elmo_token_embedder",
-       "options_file": "/scratch_global/DATASETS/text-embeddings/elmo/original/elmo_2x4096_512_2048cnn_2xhighway_options.json",
-       "weight_file": "/scratch_global/DATASETS/text-embeddings/elmo/original/elmo_2x4096_512_2048cnn_2xhighway_weights.hdf5",
+       "options_file": "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_options.json",
+       "weight_file": "https://s3-us-west-2.amazonaws.com/allennlp/models/elmo/2x4096_512_2048cnn_2xhighway/elmo_2x4096_512_2048cnn_2xhighway_weights.hdf5",
         "do_layer_norm": true,
         "dropout": 0.0
       },
@@ -71,9 +71,9 @@
     },
     "validation_metric": "+f1-measure-overall",
     "num_serialized_models_to_keep": 1,
-    "num_epochs": 11,
+    "num_epochs": 21,
     "grad_norm": 5.0,
-    "patience": 11,
+    "patience": 21,
     "cuda_device": -1
   }
 }

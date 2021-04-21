@@ -59,10 +59,10 @@ class ModTagger(Model):
                  encoder: Seq2SeqEncoder,
                  label_namespace: str = "labels",
                  constraint_type: str = None,
-                 feedforward: FeedForward = None,
+                 feedforward: FeedForward = FeedForward(input_dim=66,num_layers=100,hidden_dims=64,activations=torch.nn.ReLU(),dropout=0.5),
                  include_start_end_transitions: bool = True,
                  dropout: float = None,
-                 verbose_metrics: bool = False,
+                 verbose_metrics: bool = True,
                  initializer: InitializerApplicator = InitializerApplicator(),
                  regularizer: Optional[RegularizerApplicator] = None) -> None:
         super().__init__(vocab, regularizer)
@@ -183,7 +183,7 @@ class ModTagger(Model):
             output["words"] = [x["words"] for x in metadata]
         return output
 
-    @overrides
+    #@overrides
     def decode(self, output_dict: Dict[str, torch.Tensor]) -> Dict[str, torch.Tensor]:
         """
         Converts the tag ids to the actual tags.
@@ -198,7 +198,7 @@ class ModTagger(Model):
 
         return output_dict
 
-    @overrides
+   # @overrides
     def get_metrics(self, reset: bool = False) -> Dict[str, float]:
         metric_dict = self.span_metric.get_metric(reset=reset)
         if self._verbose_metrics:
