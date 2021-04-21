@@ -51,7 +51,7 @@ def snips_reader(file='train.txt', dataset_download_path='../ontonotes/', valid_
                  drop_empty=False):
     sentences = []
     ys = []
-    with open(dataset_download_path + 'valid.txt', "r") as data_file:
+    with open(dataset_download_path + 'valid.txt', "r" , encoding='utf8') as data_file:
         for is_divider, lines in itertools.groupby(data_file, _is_divider):
             # Ignore the divider chunks, so that `lines` corresponds to the words
             # of a single sentence.
