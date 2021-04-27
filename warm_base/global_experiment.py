@@ -34,7 +34,7 @@ for random_seed in range(1, 5):
             # Here we edit the config for a particular experiment
             base_config['dataset_reader']['valid_class'] = config[0]
             base_config['dataset_reader']['drop_empty'] = False
-            base_config['trainer']['cuda_device'] = config[1]
+            base_config['trainer']['cuda_device'] = -1
             this_dir = os.getcwd().split('/')[-1]
 
             copy_directory = os.getcwd()[:-(len(this_dir) + 1)] + '/copies/' + this_dir + '/pnet_' + config[
@@ -72,7 +72,7 @@ for random_seed in range(1, 5):
             execute('rm -f ' + model_directory + '/stderr.log')
 
             # We need to edit the model after warming to load it
-
+            '''
             try:
                 # if we have done it already we would have loaded this flag successfully
                 flag = np.load(model_directory + '/flag.npy')
@@ -86,7 +86,7 @@ for random_seed in range(1, 5):
                         dic['optimizer']['state'] = defaultdict(dict)
                     torch.save(dic, model_directory + '/training_state_epoch_{}.th'.format(i_epoch))
                 np.save(model_directory + '/flag.npy', np.array([0]))
-
+            '''
             # Then we run our experiment
             cmd = 'python3 ' + copy_directory + '/my_run.py train '
             cmd += copy_directory + '/config.json -s '

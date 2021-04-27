@@ -46,7 +46,7 @@ def tokenize(s):
     return re.findall(r"[\w']+|[‑–—“”€№…’\"#$%&\'()+,-./:;<>?]", s)
 
 
-def snips_reader(file='train', dataset_download_path='../ontonotes/', valid_class=None, random_seed=None, drop_empty=False):
+def snips_reader(file='train.txt', dataset_download_path='../ontonotes/', valid_class=None, random_seed=None, drop_empty=False):
     # Here we just take all the data, erase all the labels of the target class and train as supervised model
     # Then this model is used as initialization for WarmProto and WarmBase model
     sentences = []

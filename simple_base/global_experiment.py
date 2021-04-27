@@ -30,7 +30,7 @@ for random_seed in range(1, 5):
             # Here we edit the config for a particular experiment
             base_config['dataset_reader']['valid_class'] = config[0]
             base_config['dataset_reader']['drop_empty'] = False
-            base_config['trainer']['cuda_device'] = config[1]
+            base_config['trainer']['cuda_device'] = -1
             this_dir = os.getcwd().split('/')[-1]
 
             copy_directory = os.getcwd()[:-(len(this_dir) + 1)] + '/copies/' + this_dir + '/pnet_' + config[

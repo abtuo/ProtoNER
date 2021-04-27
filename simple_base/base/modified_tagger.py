@@ -59,7 +59,7 @@ class ModTagger(Model):
                  encoder: Seq2SeqEncoder,
                  label_namespace: str = "labels",
                  constraint_type: str = None,
-                 feedforward: FeedForward = FeedForward(input_dim=66,num_layers=100,hidden_dims=64,activations=torch.nn.ReLU(),dropout=0.5),
+                 feedforward: FeedForward = None,
                  include_start_end_transitions: bool = True,
                  dropout: float = None,
                  verbose_metrics: bool = True,
